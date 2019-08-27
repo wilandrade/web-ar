@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Web AR DEMO</title>
+  <script src="js/aframe.js"></script>
+  <script src="js/aframe-ar.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <a-scene embedded arjs='sourceType: webcam;'>
+    <a-marker-camera preset='hiro'>
+      <a-image src="videos/nature.mp4" position="0 0.1 0" rotation="-90 0 0" scale="1 1 1"></a-image>
+    </a-marker-camera>
+  </a-scene>
+
+  <div class="overlay" id="root"></div>
+</body>
+
+</html>

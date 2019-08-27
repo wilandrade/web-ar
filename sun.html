@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Web AR DEMO</title>
+  <script src="js/aframe.js"></script>
+  <script src="js/aframe-ar.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <a-scene embedded arjs='sourceType: webcam; precision: mediump'>
+
+    <a-assets>
+      <a-mixin id="planet" rotation="-90 0 0" geometry="primitive: sphere; radius: 0.5"></a-mixin>
+      <a-mixin id="orbitAnimation"
+        animation="property: object3D.rotation.y; to: 360; loop: true; easing: linear; dur: 3000"></a-mixin>
+      <a-mixin id="spinAnimation"
+        animation="property: object3D.rotation.z; to: 360; loop: true; easing: linear; dur: 6000"></a-mixin>
+      <img id="sun" src="img/sun.jpg">
+    </a-assets>
+
+    <a-marker preset='hiro'>
+      <a-entity mixin="planet spinAnimation" position="0 1 0" material="shader: flat; src: #sun"></a-entity>
+      <a-entity mixin="orbitAnimation" animation="dur: 8000">
+        <a-entity mixin="planet" material="color: red" position="3 1 0" geometry="radius: .15"></a-entity>
+      </a-entity>
+      <a-entity mixin="orbitAnimation" animation="dur: 4000">
+        <a-entity mixin="planet" material="color: blue" position="2 1 0" geometry="radius: .05"></a-entity>
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>

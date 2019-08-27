@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Web AR DEMO</title>
+  <script src="js/aframe.js"></script>
+  <script src="js/aframe-ar.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+    <a-assets>
+      <a-asset-item id="dino-obj" src="/assets/dino.obj"></a-asset-item>
+      <a-asset-item id="palm_tree-obj" src="/assets/Palm_Tree.obj"></a-asset-item>
+      <a-asset-item id="palm_tree-mtl" src="/assets/Palm_Tree.mtl"></a-asset-item>
+    </a-assets>
+
+    <a-marker preset='hiro'>
+      <a-entity obj-model="obj: #dino-obj; mtl: #dino-mtl" position="0 0 0" rotation="0 0 0" scale=".003 .003 .003">
+      </a-entity>
+      <a-entity obj-model="obj: #palm_tree-obj; mtl: #palm_tree-mtl" rotation="0 0 0" position="2 0 0" scale="1 1 1">
+      </a-entity>
+      <a-entity obj-model="obj: #palm_tree-obj; mtl: #palm_tree-mtl" rotation="0 0 0" position="-2 0 -1" scale="1 1 1">
+      </a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+
+  </a-scene>
+</body>
+
+</html>
