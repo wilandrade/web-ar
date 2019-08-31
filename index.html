@@ -5,61 +5,14 @@
   <title>Web AR DEMO</title>
   <script src="js/aframe.js"></script>
   <script src="js/aframe-ar.js"></script>
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-    }
-
-    .app-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .header {
-      color: white;
-    }
-
-    .overlay {
-      position: fixed;
-      height: 90px;
-      width: 100%;
-      bottom: 0;
-      background-color: #005;
-      text-align: center;
-      padding-top: 30px;
-    }
-
-    .rotate-btn {
-      width: 20%;
-      max-width: 150px;
-      height: 20px;
-      background-color: orange;
-    }
-  </style>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <a-scene embedded arjs='sourceType: webcam; precision: mediump'>
-    <a-box id="test-box" scale="1 1 1" position='0 0.0 0' opacity='0.8' material='color: blue;'></a-box>
+  <a-scene embedded arjs='sourceType: webcam;'>
+    <a-box id="test-box" scale="1 1 1" position='0 0.5 0' material='color: blue;'></a-box>
     <a-marker-camera preset='hiro'>
     </a-marker-camera>
   </a-scene>
-  <div class="app-container">
-    <div class="overlay">
-      <button class="rotate-btn" id="text-btn">Test</button>
-    </div>
-  </div>
-  <script>
-    let btn = document.getElementById("text-btn");
-    btn.addEventListener("click", () => {
-      let box = document.getElementById("test-box");
-      box.object3D.rotation.x += 1;
-    });
-  </script>
 </body>
 
 </html>
