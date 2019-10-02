@@ -8,4 +8,4 @@ NodeJS
 
 Run ```yarn start``` to run server. 
 
-Find all the different rounds in index.js
+Find all the different routes in index.js
