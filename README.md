@@ -1,4 +1,4 @@
-A bunch of Web AR demos made with AR.js
+A bunch of Web AR demos made with AR.js. Works on computers with camera or Mobile phones from last 2-3 years
 
 Find the Demos at: https://ar-demo.herokuapp.com/
 and then point your camera to this image: 
