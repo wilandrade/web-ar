@@ -1,12 +1,4 @@
-Simple express server that serves different AR.js demos.
-
-
-Dependencies:
-NodeJS
-
-
-
-Run ```yarn start``` to run server. 
+A bunch of Web AR demos made with AR.js
 
 Find the Demos at: https://ar-demo.herokuapp.com/
 and then point your camera to this image: 
@@ -23,3 +15,11 @@ Demo Routes
 "/sun", Sample of a 3D animation (mini solar system)
 
 "/dino", Sample of complex 3D model (still working on materials)
+
+Run Locally
+======
+Dependencies:
+NodeJS
+
+
+Run ```yarn start``` to start server. 
