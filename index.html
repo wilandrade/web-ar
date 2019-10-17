@@ -2,17 +2,255 @@
 <html lang="en">
 
 <head>
-  <title>Web AR DEMO</title>
-  <script src="js/aframe.js"></script>
-  <script src="js/aframe-ar.js"></script>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8" />
+  <title>Rosetta: A EN-JP Sentence Database</title>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+  <style>
+    /* Shared
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .button {
+      border-radius: 100px;
+    }
+
+    /* Sections
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .section {
+      padding: 8rem 0 7rem;
+      text-align: center;
+    }
+
+    .section-heading,
+    .section-description {
+      margin-bottom: 1.2rem;
+    }
+
+    /* Hero
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .avatars {
+      position: relative;
+    }
+
+    .avatar {
+      position: relative;
+      max-width: 80%;
+      margin: 3rem auto -12rem;
+    }
+
+    .avatar+.avatar {
+      display: none;
+    }
+
+    /* Values
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .values {
+      background-image: url("../images/values-bg.jpg");
+      background-size: cover;
+      color: #fff;
+      padding-bottom: 5rem;
+    }
+
+    .value-multiplier {
+      margin-bottom: 0.5rem;
+      color: #11dfc7;
+    }
+
+    .value-heading {
+      margin-bottom: 0.3rem;
+    }
+
+    .value-description {
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* Help
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .get-help {
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Categories
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .categories {
+      background-image: url("../images/values-bg.jpg");
+      background-size: cover;
+      color: #fff;
+    }
+
+    .categories .section-description {
+      margin-bottom: 4rem;
+    }
+
+    /* Bigger than 550 */
+    @media (min-width: 550px) {
+      .section {
+        padding: 12rem 0 11rem;
+      }
+
+      .hero {
+        padding-bottom: 12rem;
+        text-align: left;
+        height: 165px;
+      }
+
+      .avatar {
+        position: absolute;
+        top: -7rem;
+        right: 3rem;
+        max-height: 362px;
+        z-index: 3;
+      }
+
+      .avatar+.avatar {
+        top: -6rem;
+        display: block;
+        max-width: 73.8%;
+        right: 0;
+        z-index: 2;
+        max-height: 338px;
+      }
+
+      .hero-heading {
+        font-size: 2.4rem;
+      }
+    }
+
+    /* Bigger than 750 */
+    @media (min-width: 750px) {
+      .hero {
+        height: 190px;
+      }
+
+      .hero-heading {
+        font-size: 2.6rem;
+      }
+
+      .section {
+        padding: 14rem 0 15rem;
+      }
+
+      .hero {
+        padding: 16rem 0 14rem;
+      }
+
+      .section-description {
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .avatar {
+        top: -14rem;
+        right: 5rem;
+        max-height: 510px;
+      }
+
+      .avatar+.avatar {
+        top: -12rem;
+        max-height: 472px;
+      }
+
+      .categories {
+        padding: 15rem 0 8rem;
+      }
+    }
+
+    /* Bigger than 1000 */
+    @media (min-width: 1000px) {
+      .section {
+        padding: 20rem 0 19rem;
+      }
+
+      .hero {
+        padding: 22rem 0;
+      }
+
+      .hero-heading {
+        font-size: 3rem;
+      }
+
+      .avatar {
+        top: -16rem;
+        max-height: 615px;
+      }
+
+      .avatar+.avatar {
+        top: -14rem;
+        max-height: 570px;
+      }
+    }
+  </style>
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='sourceType: webcam;'>
-    <a-box id="test-box" scale="1 1 1" position='0 0.5 0' material='color: blue;'></a-box>
-    <a-marker-camera preset='hiro'>
-    </a-marker-camera>
-  </a-scene>
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="section get-help">
+    <div class="container">
+      <h1 class="section-heading">Web AR Demo</h1>
+      <h4 class="hero-heading">
+        A few demos showing marker based AR on the web. Built with <a
+          href="https://github.com/jeromeetienne/AR.js">AR.js</a>
+      </h4>
+      <div>
+        <a style="background-color:#e535ab;" class="button button-primary" href="/images">Image Demo</a>
+      </div>
+      <div>
+        <a style="background-color:#e535ab;" class="button button-primary" href="/video">Video Demo</a>
+      </div>
+      <div>
+        <a style="background-color:#e535ab;" class="button button-primary" href="/sun">Small solar system Demo</a>
+      </div>
+      <div>
+        <a style="background-color:#e535ab;" class="button button-primary" href="/sun">3D Object (in progress - no
+          material)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section hero">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <ol>
+            <li>Load this page on your phone or laptop. (any modern device with a camera) </li>
+            <li>Click on one of the demos above to load the AR experience.</li>
+            <li>Point the camera of your device to the icon here.</li>
+          </ol>
+          <span>You can either point to the marker on another screen or print it out. The experience will scale to the
+            size of the marker.</span>
+        </div>
+        <div class="one-half column avatars">
+          <img class="avatar"
+            src="https://camo.githubusercontent.com/4f0b407880409c226d6411435d1ed6e3f12950c2/68747470733a2f2f692e696d6775722e636f6d2f54514f447047482e6a7067" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 
 </html>
